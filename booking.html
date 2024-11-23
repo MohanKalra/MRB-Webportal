@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asti India Pvt. Ltd. - Room Booking</title>
+    <style>
+        body {
+            font-family: Verdana;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        @font-face {
+            font-family: 'Eras Demi ITC';
+            src: url('C:/Users/mohan/Desktop/Meeting_room-booking/ERASDEMI.TTF') format('truetype');
+        }
+
+        header {
+            background-color: #2a88e7e0;
+            color: black;
+            padding: 10px; /* Adjusted padding */
+            display: flex;
+            justify-content: center; /* Horizontally center the text */
+            align-items: center; /* Vertically center the text */
+            text-align: center;
+            height: 100px; /* Adjust header height */
+        }
+
+        header img {
+            width: 200px;
+            height: auto;
+            position: absolute; /* Position the image separately from the text */
+            left: 20px; /* Position the logo to the left */
+        }
+
+        .header-title {
+            text-align: center; /* Ensure the text is centered */
+            flex-grow: 1;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 26px; /* Keep font size same */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .container {
+            width: 85%;
+            margin: 20px auto;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 40px;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #003366;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%; /* Ensure all form elements occupy full width */
+        }
+
+        .form-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px; /* Adjusted spacing */
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .form-group select, .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-right: 0;
+            box-sizing: border-box; /* Ensure padding does not affect overall width */
+        }
+
+        .form-group button {
+            background-color: #003366;
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #003366;
+            color: #fff;
+            padding: 10px;
+        }
+
+        td {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        td.available {
+            background-color: #d4edda;
+        }
+
+        td.booked {
+            background-color: #f8d7da;
+        }
+
+.form-group button {
+    background-color: #2a88e7;
+    color: #fff;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1); /* 3D shadow */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.form-group button:hover {
+    background-color: #00599d; /* Darken on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3), 0 3px 6px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    transform: translateY(-2px); /* Button lifts up */
+}
+
+.form-group button:active {
+    background-color: #002f5d; /* Darker color when pressed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2); /* Shadow reduces when pressed */
+    transform: translateY(2px); /* Button appears pressed */
+}
+
+
+
+
+        /* Adjustments for the agenda textarea */
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-right: 0;
+            box-sizing: border-box; /* Ensure padding does not affect overall width */
+            resize: vertical; /* Allow resizing vertically */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" alt="Company Logo">
+    <div class="header-title">
+        <h1>Meeting Room Booking Portal</h1>
+        <h1>Asti India Pvt. Ltd.</h1>
+        <p style="margin-bottom: 5px;margin-top: 10px;">Book a Meeting Room for your next office meeting</p>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- Section 1: Booking -->
+    <div class="section" id="booking-section">
+        <h2>Book a Meeting Room</h2>
+        <form id="bookingForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="userName">Your Name:</label>
+                    <input type="text" id="userName" name="userName" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="room">Select Room:</label>
+                    <select id="room" name="room" required>
+                        <option value="101">Room No - 101</option>
+                        <option value="102">Room No - 102</option>
+                        <option value="201">Room No - 201</option>
+                        <option value="202">Room No - 202</option>
+                        <option value="203">Room No - 203</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                  <label for="agenda">Agenda:</label>
+                  <textarea id="agenda" name="agenda" placeholder="Enter the meeting agenda" rows="4" required></textarea>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="date">Select Date:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="startTime">From Time:</label>
+                    <select id="startTime" name="startTime" required>
+                        <option value="08:00">08:00 AM</option>
+                        <option value="09:00">09:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">01:00 PM</option>
+                        <option value="14:00">02:00 PM</option>
+                        <option value="15:00">03:00 PM</option>
+                        <option value="16:00">04:00 PM</option>
+                        <option value="17:00">05:00 PM</option>
+                        <option value="18:00">06:00 PM</option>
+                        <option value="19:00">07:00 PM</option>
+                        <option value="20:00">08:00 PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="endTime">To Time:</label>
+                    <select id="endTime" name="endTime" required>
+                        <option value="09:00">09:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">01:00 PM</option>
+                        <option value="14:00">02:00 PM</option>
+                        <option value="15:00">03:00 PM</option>
+                        <option value="16:00">04:00 PM</option>
+                        <option value="17:00">05:00 PM</option>
+                        <option value="18:00">06:00 PM</option>
+                        <option value="19:00">07:00 PM</option>
+                        <option value="20:00">08:00 PM</option>
+                        <option value="21:00">09:00 PM</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Click for Availability & Book Meeting Room</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Section 2: Booking Status -->
+    <div class="section" id="status-section">
+        <h2>Check Booking Status</h2>
+        <p>Select a date to view room availability:</p>
+        <input type="date" id="statusDate" name="statusDate" onchange="updateAvailability(this.value)" required>
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Room No - 101</th>
+                    <th>Room No - 102</th>
+                    <th>Room No - 201</th>
+                    <th>Room No - 202</th>
+                    <th>Room No - 203</th>
+                </tr>
+            </thead>
+            <tbody id="availabilityTable">
+                <!-- Availability Table populated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script>
+    const bookings = {};
+
+    // Function to get today's date in YYYY-MM-DD format
+    function getTodayDate() {
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, '0');
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const year = today.getFullYear();
+        return `${year}-${month}-${day}`;
+    }
+
+    // Update availability based on the selected date
+    function updateAvailability(date) {
+        const table = document.getElementById("availabilityTable");
+        table.innerHTML = "";
+
+        const timeSlots = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"];
+        const rooms = ["101", "102", "201", "202", "203"];
+
+        timeSlots.forEach(time => {
+            const row = document.createElement("tr");
+            const timeCell = document.createElement("td");
+            timeCell.textContent = time;
+            row.appendChild(timeCell);
+
+            rooms.forEach(room => {
+                const cell = document.createElement("td");
+                const bookingKey = `${date}-${time}-${room}`;
+                if (bookings[bookingKey]) {
+                    cell.className = "booked";
+                    cell.textContent = `Booked (${bookings[bookingKey].name}: ${bookings[bookingKey].agenda})`;
+                } else {
+                    cell.className = "available";
+                    cell.textContent = "Available";
+                }
+                row.appendChild(cell);
+            });
+            table.appendChild(row);
+        });
+    }
+
+    // Initialize with today's date
+    window.onload = function() {
+        const todayDate = getTodayDate();
+        document.getElementById("statusDate").value = todayDate; // Set default date in the date picker
+        updateAvailability(todayDate); // Load today's availability by default
+    };
+
+    // Handle booking form submission
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.userName.value;
+        const room = form.room.value;
+        const agenda = form.agenda.value;
+        const date = form.date.value;
+        const startTime = form.startTime.value;
+        const endTime = form.endTime.value;
+
+        const times = [];
+        for (let i = parseInt(startTime.split(":")[0]); i < parseInt(endTime.split(":")[0]); i++) {
+            const time = i < 10 ? `0${i}:00` : `${i}:00`;
+            times.push(time);
+        }
+
+        times.forEach(time => {
+            const bookingKey = `${date}-${time}-${room}`;
+            bookings[bookingKey] = { name, agenda };
+        });
+
+        alert(`${room} booked successfully from ${startTime} to ${endTime} on ${date} by ${name}`);
+        form.reset();
+        updateAvailability(date);
+    });
+</script>
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2024 Asti India Pvt. Ltd. | All Rights Reserved</p>
+        </footer>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asti India Pvt. Ltd. - Room Booking</title>
+    <style>
+        body {
+            font-family: Eras Demi ITC, Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        @font-face {
+            font-family: 'Eras Demi ITC';
+            src: url('C:/Users/mohan/Desktop/Meeting_room-booking/ERASDEMI.TTF') format('truetype'); /* Replace with the correct path to your font */
+        }
+
+        header {
+            background-color: #2a88e7e0;
+            color: black;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Eras Demi ITC', Arial, sans-serif;
+        }
+
+        header img {
+            width: 200px;
+            height: auto;
+            position: absolute;
+            left: 20px;
+        }
+
+        .header-title {
+            flex-grow: 1;
+            margin: 0;
+        }
+
+        .header-title h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .header-title p {
+            margin-top: 5px;
+            font-size: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+            color: #003366;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .form-row .form-group:last-child {
+            flex: 2;
+        }
+
+        .form-group select, .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-group button {
+            background-color: #003366;
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .form-group button:hover {
+            background-color: #00509e;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 12px;
+        }
+
+        th {
+            background-color: #003366;
+            color: #fff;
+        }
+
+        td.available {
+            background-color: #d4edda;
+        }
+
+        td.booked {
+            background-color: #f8d7da;
+        }
+
+        td {
+            cursor: pointer;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            background-color: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -60px;
+        }
+
+        td:hover .tooltip {
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" alt="Company Logo">
+    <div class="header-title">
+        <h1>Meeting Room Booking Portal</h1>
+        <h1>Asti India Pvt. Ltd.</h1>
+        <p>Book a Meeting Room for your next office meeting</p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="form-container">
+        <h2>User Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Here, replace with actual backend login validation.
+        if (username === 'user' && password === 'password') {
+            // On successful login, redirect to booking page (this is just a demo redirect)
+            window.location.href = 'booking.html';  // replace 'booking.html' with your actual booking page.
+        } else {
+            alert('Invalid Username or Password');
+        }
+    });
+</script>
+
+</body>
+</html>
