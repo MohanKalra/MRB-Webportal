@@ -370,6 +370,15 @@
             const time = i < 10 ? `0${i}:00` : `${i}:00`;
             times.push(time);
         }
+        const isSlotBooked = times.some(time => {
+            const bookingKey = `${date}-${time}-${room}`;
+            return bookings[bookingKey];
+        });
+
+        if (isSlotBooked) {
+            alert(`Error: Room ${room} is already booked for one or more of the selected time slots on ${date}. Please choose a different time or room.`);
+            return;
+        }
 
         times.forEach(time => {
             const bookingKey = `${date}-${time}-${room}`;
