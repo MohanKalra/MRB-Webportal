@@ -251,6 +251,47 @@
             box-sizing: border-box; /* Ensure padding does not affect overall width */
             resize: vertical; /* Allow resizing vertically */
         }
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.modal.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.modal.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.modal button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00599d;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.modal button:hover {
+    background-color: #003366;
+}
+
     </style>
 </head>
 <body>
@@ -358,6 +399,15 @@
             <div class="form-group">
                 <button type="submit">Click for Availability & Book Meeting Room</button>
             </div>
+            <div id="successModal" class="modal success">
+                <p id="successMessage"></p>
+                <button onclick="closeModal('successModal'); window.location.href='#dashboard';">OK</button>
+            </div>
+
+            <div id="errorModal" class="modal error">
+                <p id="errorMessage"></p>
+                <button onclick="closeModal('errorModal')">OK</button>
+            </div>
         </form>
     </div>
 
@@ -426,16 +476,30 @@
             table.appendChild(row);
         });
     }
-
-    // Initialize with today's date
+  // Initialize with today's date
     window.onload = function() {
         const todayDate = getTodayDate();
         document.getElementById("statusDate").value = todayDate; // Set default date in the date picker
         updateAvailability(todayDate); // Load today's availability by default
     };
+// Function to display a modal
+function showModal(modalId, message) {
+    const modal = document.getElementById(modalId);
+    if (modalId === 'successModal') {
+        document.getElementById('successMessage').textContent = message;
+    } else {
+        document.getElementById('errorMessage').textContent = message;
+    }
+    modal.style.display = 'block';
+}
 
-    // Handle booking form submission
-    document.getElementById("bookingForm").addEventListener("submit", function (e) {
+// Function to close the modal
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+// Handle booking form submission
+document.getElementById("bookingForm").addEventListener("submit", function (e) {
     e.preventDefault(); // Prevent default form submission
 
     const form = e.target;
@@ -447,7 +511,7 @@
     const endTime = form.endTime.value;
 
     if (startTime >= endTime) {
-        alert("Error: 'From Time' must be earlier than 'To Time'. Please select a valid time range.");
+        showModal('errorModal', "Error: 'From Time' must be earlier than 'To Time'. Please select a valid time range.");
         return;
     }
 
@@ -463,8 +527,8 @@
     });
 
     if (isSlotBooked) {
-        alert(`Error: Room ${room} is already booked for one or more of the selected time slots on ${date}. Please choose a different time or room.`);
-        form.reset();        
+        showModal('errorModal', `Error: Room ${room} is already booked for one or more of the selected time slots on ${date}. Please choose a different time or room.`);
+        form.reset(); 
         return;
     }
 
@@ -473,12 +537,13 @@
         bookings[bookingKey] = { name, agenda };
     });
 
-    alert(`${room} booked successfully from ${startTime} to ${endTime} on ${date} by ${name}`);
-    form.reset(); 
+    showModal('successModal', `Success! Room ${room} booked successfully from ${startTime} to ${endTime} on ${date} by ${name}.`);    
+    form.reset();
     updateAvailability(date);
 });
 </script>
-        <!-- Footer Section -->
+
+<!-- Footer Section -->
         <footer>
             <p>&copy; 2024 Asti India Pvt. Ltd. | All Rights Reserved</p>
         </footer>
